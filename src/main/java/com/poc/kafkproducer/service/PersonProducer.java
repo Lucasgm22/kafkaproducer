@@ -1,6 +1,6 @@
 package com.poc.kafkproducer.service;
 
-import com.poc.kafkproducer.data.PersonMessage;
+import com.poc.kafkproducer.data.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PersonProducer {
 
-    private final KafkaTemplate<PersonMessage.Key, PersonMessage.Value> template;
+    private final KafkaTemplate<Message.Key, Message.Value> template;
 
-    public void produce(PersonMessage personMessage) {
+    public void produce(Message message) {
         template.send("quickstart-events",
-                       personMessage.getKey(),
-                       personMessage.getValue());
+                       message.getKey(),
+                       message.getValue());
     }
 
 }
