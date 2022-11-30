@@ -1,7 +1,7 @@
 package com.poc.kafkproducer.controller;
 
 import com.poc.kafkproducer.data.Message;
-import com.poc.kafkproducer.service.PersonProducer;
+import com.poc.kafkproducer.service.Producer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MessageController {
 
-    private final PersonProducer personProducer;
+    private final Producer producer;
 
     @PostMapping
     public ResponseEntity<Void> sendToTopic(@RequestBody Message message) {
 
-        personProducer.produce(message);
+        producer.produce(message);
 
         return ResponseEntity.ok().build();
     }
