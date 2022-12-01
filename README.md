@@ -11,7 +11,7 @@ Projeto prova de conceito para usar [SpringKafka](https://docs.spring.io/spring-
 ```
 
 # Postar no tópico
-- Usar o consumidor no terminal, explicado no [tutorial](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.3.1/kafka_2.13-3.3.1.tgz);
+- Usar o produtor no terminal, explicado no [tutorial](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.3.1/kafka_2.13-3.3.1.tgz);
 
 OU
 
