@@ -19,7 +19,7 @@ OU
 
     Ex: 
     ```
-        curl -X POST localhost:8080/message 
+        curl -X POST localhost:8080/message?topic={topicname} 
         -H "Content-Type: application/json" 
         -d '{"key": 1, "value": "bbbbbb"}'  
     ```

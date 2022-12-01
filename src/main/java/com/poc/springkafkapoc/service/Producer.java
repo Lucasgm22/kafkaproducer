@@ -11,8 +11,8 @@ public class Producer {
 
     private final KafkaTemplate<Message.Key, Message.Value> template;
 
-    public void produce(Message message) {
-        template.send("quickstart-events",
+    public void produce(String topic, Message message) {
+        template.send(topic,
                        message.getKey(),
                        message.getValue());
     }

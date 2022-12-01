@@ -4,10 +4,7 @@ import com.poc.springkafkapoc.data.Message;
 import com.poc.springkafkapoc.service.Producer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/message")
@@ -17,9 +14,10 @@ public class MessageController {
     private final Producer producer;
 
     @PostMapping
-    public ResponseEntity<Void> sendToTopic(@RequestBody Message message) {
+    public ResponseEntity<Void> sendToTopic(@RequestParam String topic,
+                                            @RequestBody Message message) {
 
-        producer.produce(message);
+        producer.produce(topic, message);
 
         return ResponseEntity.ok().build();
     }
