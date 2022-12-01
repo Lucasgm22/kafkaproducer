@@ -1,6 +1,6 @@
 # springkafka-poc
 
-Projeto prova de conceito para usar SpringKafka para produzir e consumir mensagens em um tópico
+Projeto prova de conceito para usar [SpringKafka](https://docs.spring.io/spring-kafka/reference/html/) para produzir e consumir mensagens em um tópico
 
 # Como rodar
 - Instalar o [kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.3.1/kafka_2.13-3.3.1.tgz);
