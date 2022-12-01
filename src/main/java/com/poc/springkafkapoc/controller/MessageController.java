@@ -1,7 +1,7 @@
-package com.poc.kafkproducer.controller;
+package com.poc.springkafkapoc.controller;
 
-import com.poc.kafkproducer.data.Message;
-import com.poc.kafkproducer.service.Producer;
+import com.poc.springkafkapoc.data.Message;
+import com.poc.springkafkapoc.service.Producer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

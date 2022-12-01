@@ -1,6 +1,6 @@
-package com.poc.kafkproducer.service;
+package com.poc.springkafkapoc.service;
 
-import com.poc.kafkproducer.data.Message;
+import com.poc.springkafkapoc.data.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;

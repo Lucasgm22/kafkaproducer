@@ -1,4 +1,4 @@
-package com.poc.kafkproducer.data;
+package com.poc.springkafkapoc.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

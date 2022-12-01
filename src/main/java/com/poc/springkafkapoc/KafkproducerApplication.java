@@ -1,8 +1,7 @@
-package com.poc.kafkproducer;
+package com.poc.springkafkapoc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.kafka.annotation.EnableKafka;
 
 @SpringBootApplication
 public class KafkproducerApplication {

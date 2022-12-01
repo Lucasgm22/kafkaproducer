@@ -1,6 +1,6 @@
-package com.poc.kafkproducer.service;
+package com.poc.springkafkapoc.service;
 
-import com.poc.kafkproducer.data.Message;
+import com.poc.springkafkapoc.data.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
