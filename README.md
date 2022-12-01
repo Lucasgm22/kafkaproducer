@@ -11,7 +11,7 @@ Projeto prova de conceito para usar SpringKafka para produzir e consumir mensage
 ```
 
 # Postar no tópico
-- Usar o consumidor no terminal, explicado no tutorial [kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.3.1/kafka_2.13-3.3.1.tgz);
+- Usar o consumidor no terminal, explicado no [tutorial](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.3.1/kafka_2.13-3.3.1.tgz);
 
 OU
 
