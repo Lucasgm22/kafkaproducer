@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 public class Consumer {
 
     @KafkaListener(topics = "quickstart-events", groupId = "poc")
-    public void consume(@Header(KafkaHeaders.RECEIVED_KEY) Message.Key key, @Payload Message.Value message) {
+    public void consume(@Header(KafkaHeaders.RECEIVED_KEY) Message.Key key,
+                        @Payload Message.Value message) {
         log.info("Message received: [key: {}, content: {}]", key, message);
     }
 }
