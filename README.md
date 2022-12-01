@@ -1,3 +1,3 @@
 # kafkaproducer
 
-Projeto prova de conceito para usar KafkaTemplate com função de produzir mensagens para um tópico
+Projeto prova de conceito para usar SpringKafka para produzir e consumir mensagens em um tópico
