@@ -18,7 +18,7 @@ public class Consumer {
 
     private Message currentMessage;
 
-    private CountDownLatch latch = new CountDownLatch(1);
+    private final CountDownLatch latch = new CountDownLatch(1);
 
     @KafkaListener(topics = "quickstart-events", groupId = "poc")
     public void consume(@Header(KafkaHeaders.RECEIVED_KEY) Message.Key key,
@@ -31,7 +31,4 @@ public class Consumer {
         log.info("Message received: [key: {}, content: {}]", key, value);
     }
 
-    public void resetLatch() {
-        latch = new CountDownLatch(1);
-    }
 }

@@ -39,8 +39,7 @@ class EmbeddedKafkaIntegrationTest {
 
         producer.produce(topic, message);
 
-        boolean messageConsumed = consumer.getLatch().await(30, TimeUnit.SECONDS);
-        assertTrue(messageConsumed);
+        consumer.getLatch().await();
         assertEquals(message, consumer.getCurrentMessage());
     }
 }
