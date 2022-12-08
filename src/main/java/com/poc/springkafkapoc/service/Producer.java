@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.retry.RecoveryCallback;
 import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
 import org.springframework.retry.listener.RetryListenerSupport;
@@ -41,30 +42,37 @@ public class Producer {
     }
 
     public void produce(Message message) {
-
-        myRetryTemplate().execute(context -> {
-                    throw new RuntimeException("Run time");
-                    //sendToTopic(message);
-                    //return message;
-                },
-                context -> {
-                    producerDLT.produce(
-                            MessageDLT.builder()
-                                    .key(MessageDLT.Key.builder()
-                                            .id(message.getKey().getId())
-                                            .build())
-                                    .value(MessageDLT.Value.builder()
-                                            .stackTrace(ExceptionUtils.getStackTrace(context.getLastThrowable()))
-                                            .value(message.getValue())
-                                            .build())
-                                    .build());
-                    log.error("Falha na integração de Produto. Realizadas {} tentativas.", context.getRetryCount(), context.getLastThrowable());
-                    return message;
-                }
-                );
+        myRetryTemplate()
+                .execute(getRetryCallback(message),
+                         getMessageRecoveryCallback(message));
     }
 
-    public void sendToTopic(Message message) {
+
+    private RetryCallback<Message, RuntimeException> getRetryCallback(Message message) {
+        return context -> {
+            sendToTopic(message);
+            return message;
+        };
+    }
+
+    private RecoveryCallback<Message> getMessageRecoveryCallback(Message message) {
+        return context -> {
+            producerDLT.produce(
+                    MessageDLT.builder()
+                            .key(MessageDLT.Key.builder()
+                                    .id(message.getKey().getId())
+                                    .build())
+                            .value(MessageDLT.Value.builder()
+                                    .stackTrace(ExceptionUtils.getStackTrace(context.getLastThrowable()))
+                                    .value(message.getValue())
+                                    .build())
+                            .build());
+            log.error("Falha na integração de Produto. Realizadas {} tentativas.", context.getRetryCount(), context.getLastThrowable());
+            return message;
+        };
+    }
+
+    private void sendToTopic(Message message) {
                 template.send("quickstart-events",
                        message.getKey(),
                        message.getValue());
