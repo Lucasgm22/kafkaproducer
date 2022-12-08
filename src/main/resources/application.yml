@@ -10,4 +10,4 @@ spring:
       properties:
         spring.json.trusted.packages: "com.poc.springkafkapoc.data"
 test:
-  topic: test
+  topic: quickstart-events

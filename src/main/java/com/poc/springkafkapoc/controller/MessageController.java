@@ -14,10 +14,9 @@ public class MessageController {
     private final Producer producer;
 
     @PostMapping
-    public ResponseEntity<Void> sendToTopic(@RequestParam String topic,
-                                            @RequestBody Message message) {
+    public ResponseEntity<Void> sendToTopic(@RequestBody Message message) {
 
-        producer.produce(topic, message);
+        producer.produce(message);
 
         return ResponseEntity.ok().build();
     }

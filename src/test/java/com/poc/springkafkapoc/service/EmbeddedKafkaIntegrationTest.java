@@ -23,8 +23,6 @@ class EmbeddedKafkaIntegrationTest {
     @Autowired
     private Producer producer;
 
-    @Value("${test.topic}")
-    private String topic;
 
     @Test
     void givenEmbeddedKafkaBroker_whenSendingWithSimpleProducer_thenMessageReceived() throws Exception {
@@ -37,7 +35,7 @@ class EmbeddedKafkaIntegrationTest {
                         .build())
                 .build();
 
-        producer.produce(topic, message);
+        producer.produce(message);
 
         consumer.getLatch().await();
         assertEquals(message, consumer.getCurrentMessage());
